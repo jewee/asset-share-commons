@@ -26,6 +26,8 @@ import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.adobe.cq.wcm.core.components.models.form.Text;
 import com.day.cq.search.eval.FulltextPredicateEvaluator;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.PostConstruct;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.api.wrappers.ValueMapDecorator;
@@ -34,8 +36,6 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Required;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 
-import javax.annotation.Nonnull;
-import javax.annotation.PostConstruct;
 import java.util.HashMap;
 
 @Model(

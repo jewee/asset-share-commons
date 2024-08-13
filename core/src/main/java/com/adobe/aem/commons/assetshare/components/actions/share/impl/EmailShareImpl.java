@@ -22,6 +22,8 @@ package com.adobe.aem.commons.assetshare.components.actions.share.impl;
 import com.adobe.aem.commons.assetshare.components.actions.share.EmailShare;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.PostConstruct;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ValueMap;
@@ -34,8 +36,6 @@ import org.apache.sling.models.annotations.Required;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-import javax.annotation.Nonnull;
-import javax.annotation.PostConstruct;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;

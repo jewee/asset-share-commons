@@ -39,9 +39,9 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.Servlet;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
@@ -156,9 +156,9 @@ public class AssetRenditionServlet extends SlingSafeMethodsServlet {
 
     protected void setResponseHeaders(final SlingHttpServletResponse response, final AssetRenditionParameters parameters) {
         if (parameters.isDownload()) {
-            response.setHeader("Content-Disposition", String.format("attachment; filename=%s", parameters.getFileName()));
+            response.setHeader("Content-Disposition", "attachment; filename=%s".formatted(parameters.getFileName()));
         } else {
-            response.setHeader("Content-Disposition", String.format("filename=%s", parameters.getFileName()));
+            response.setHeader("Content-Disposition", "filename=%s".formatted(parameters.getFileName()));
         }
     }
 

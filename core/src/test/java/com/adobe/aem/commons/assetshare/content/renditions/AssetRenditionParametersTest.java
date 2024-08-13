@@ -26,17 +26,17 @@ import com.adobe.aem.commons.assetshare.content.properties.ComputedProperties;
 import com.adobe.aem.commons.assetshare.content.properties.impl.ComputedPropertiesImpl;
 import com.day.cq.dam.commons.util.DamUtil;
 import io.wcm.testing.mock.aem.junit.AemContext;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AssetRenditionParametersTest {
 
     @Rule
@@ -44,7 +44,7 @@ public class AssetRenditionParametersTest {
 
     private AssetModel testAssetModel;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ctx.load().json(getClass().getResourceAsStream("AssetRenditionParametersTest.json"), "/content/dam");
         ctx.currentResource("/content/dam/test.png");
@@ -109,19 +109,23 @@ public class AssetRenditionParametersTest {
         assertEquals("param2", actual.getParameters().get(2));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void getters_FromRequestWithInvalidSuffixSegments() throws IllegalArgumentException {
-        ctx.requestPathInfo().setExtension("renditions");
-        ctx.requestPathInfo().setSuffix("testing");
+        assertThrows(IllegalArgumentException.class, () -> {
+            ctx.requestPathInfo().setExtension("renditions");
+            ctx.requestPathInfo().setSuffix("testing");
 
-        final AssetRenditionParameters actual = new AssetRenditionParameters(ctx.request());
+            final AssetRenditionParameters actual = new AssetRenditionParameters(ctx.request());
+        });
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void getters_FromRequestWithInvalidLastSuffix() throws IllegalArgumentException {
-        ctx.requestPathInfo().setExtension("renditions");
-        ctx.requestPathInfo().setSuffix("testing/foo");
+        assertThrows(IllegalArgumentException.class, () -> {
+            ctx.requestPathInfo().setExtension("renditions");
+            ctx.requestPathInfo().setSuffix("testing/foo");
 
-        final AssetRenditionParameters actual = new AssetRenditionParameters(ctx.request());
+            final AssetRenditionParameters actual = new AssetRenditionParameters(ctx.request());
+        });
     }
 }

@@ -3,12 +3,12 @@ package com.adobe.aem.commons.assetshare.components.actions.impl;
 import com.adobe.aem.commons.assetshare.components.actions.AssetDownloadHelper;
 import com.day.cq.dam.api.jobs.AssetDownloadService;
 import io.wcm.testing.mock.aem.junit.AemContext;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.osgi.framework.Constants;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.service.cm.Configuration;
@@ -18,11 +18,11 @@ import java.io.IOException;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AssetDownloadHelperImplTest {
 
     private static final String ASSET_DOWNLOAD_SERVLET_PID = "com.day.cq.dam.core.impl.servlet.AssetDownloadServlet";
@@ -36,7 +36,7 @@ public class AssetDownloadHelperImplTest {
 
     ConfigurationAdmin spyConfigurationAdmin;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         //spy ConfigAdmin since the method listConfigurations is not supported by the osgi mocks
         spyConfigurationAdmin = spy(ctx.getService(ConfigurationAdmin.class));

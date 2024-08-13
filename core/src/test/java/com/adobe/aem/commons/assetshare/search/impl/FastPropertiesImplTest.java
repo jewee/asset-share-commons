@@ -22,24 +22,24 @@ package com.adobe.aem.commons.assetshare.search.impl;
 import com.adobe.aem.commons.assetshare.search.FastProperties;
 import com.google.common.collect.ImmutableList;
 import io.wcm.testing.mock.aem.junit.AemContext;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Collection;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class FastPropertiesImplTest {
 
     @Rule
     public AemContext ctx = new AemContext();
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ctx.load().json(this.getClass().getResourceAsStream("FastPropertiesImplTest.json"), "/oak:index");
 

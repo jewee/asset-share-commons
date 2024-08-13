@@ -27,6 +27,7 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.Page;
+import jakarta.annotation.Nonnull;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -39,8 +40,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.Nonnull;
-import javax.inject.Named;
+import jakarta.inject.Named;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -148,12 +148,12 @@ public class TagsImpl extends AbstractEmptyTextComponent implements Tags {
 
         if (value instanceof List) {
             tagValues = (List<String>) value;
-        } else if (value instanceof String[]) {
-            tagValues = Arrays.asList((String[])value);
-        } else if (value instanceof String) {
-            tagValues.add((String) value);
-        } else if (value instanceof Set) {
-            tagValues = new ArrayList<>((Set) value);
+        } else if (value instanceof String[] strings) {
+            tagValues = Arrays.asList(strings);
+        } else if (value instanceof String string) {
+            tagValues.add(string);
+        } else if (value instanceof Set<?> set) {
+            tagValues = new ArrayList<>(set);
         } else {
             log.warn("Failed to collect Tags from incompatible Computed Property [ {} ]", tagPropertyName);
         }

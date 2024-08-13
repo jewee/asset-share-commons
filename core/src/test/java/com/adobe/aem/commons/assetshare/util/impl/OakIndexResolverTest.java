@@ -2,18 +2,18 @@ package com.adobe.aem.commons.assetshare.util.impl;
 
 
 import io.wcm.testing.mock.aem.junit.AemContext;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OakIndexResolverTest {
 
     @Rule
     public AemContext ctx = new AemContext();
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ctx.load().json(this.getClass().getResourceAsStream("OakIndexResolverTest.json"), "/oak:index");
     }

@@ -67,7 +67,7 @@ public class AssetResolverImpl implements AssetResolver {
             }
 
             if (asset == null) {
-                throw new IllegalArgumentException(String.format("Unable to adapt request [ %s ] via a SlingHttpServletRequest into an Asset.", request.getRequestURI()));
+                throw new IllegalArgumentException("Unable to adapt request [ %s ] via a SlingHttpServletRequest into an Asset.".formatted(request.getRequestURI()));
             }
         }
 
@@ -97,7 +97,7 @@ public class AssetResolverImpl implements AssetResolver {
         final Asset asset = assetResource.adaptTo(Asset.class);
 
         if (asset == null) {
-            throw new IllegalArgumentException(String.format("Unable to adapt resource [ %s ] via a Resource into an Asset.", assetResource.getPath()));
+            throw new IllegalArgumentException("Unable to adapt resource [ %s ] via a Resource into an Asset.".formatted(assetResource.getPath()));
         }
 
         return asset;

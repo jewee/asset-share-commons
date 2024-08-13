@@ -44,7 +44,7 @@ import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;

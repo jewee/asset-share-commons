@@ -31,21 +31,21 @@ import com.adobe.aem.commons.assetshare.util.impl.ExpressionEvaluatorImpl;
 import com.day.cq.dam.commons.util.DamUtil;
 import io.wcm.testing.mock.aem.junit.AemContext;
 import org.apache.sling.commons.mime.MimeTypeService;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AssetRenditionsImplTest {
 
     @Rule
@@ -56,7 +56,7 @@ public class AssetRenditionsImplTest {
 
     private AssetModel testAssetModel;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ctx.load().json(getClass().getResourceAsStream("AssetRenditionsImplTest.json"), "/content/dam");
         ctx.currentResource("/content/dam/test.png");

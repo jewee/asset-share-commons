@@ -98,9 +98,9 @@ public class AssetKitCreatorWorkflowProcess implements WorkflowProcess {
         final Resource payloadResource = resourceResolver.getResource(payload);
 
         if (payloadResource == null) {
-            throw new WorkflowException(String.format("Payload [ %s ] is not a resource.", payload));
+            throw new WorkflowException("Payload [ %s ] is not a resource.".formatted(payload));
         } else if (!(assetKitHelper.isAssetFolder(payloadResource) || assetKitHelper.isAssetCollection(payloadResource))) {
-            throw new WorkflowException(String.format("Payload [ %s ] is not a valid DAM asset folder or collection.", payload));
+            throw new WorkflowException("Payload [ %s ] is not a valid DAM asset folder or collection.".formatted(payload));
         }
 
         final boolean trackAndUpdate = metaDataMap.get(WORKFLOW_TRACK_AND_UPDATE, false);
@@ -111,7 +111,7 @@ public class AssetKitCreatorWorkflowProcess implements WorkflowProcess {
 
         final Resource trackingResource = getOrCreateTrackingResource(payloadResource);
 
-        String assetsKitId = pagePathGenerators.stream().filter(pagePathGenerator -> StringUtils.equals(pagePathGeneratorId, pagePathGenerator.getId())).findFirst().orElseThrow(() -> new WorkflowException(String.format("No PagePathGenerator found for ID [ %s ]", pagePathGeneratorId))).generatePagePath(rootPagePath, payloadResource);
+        String assetsKitId = pagePathGenerators.stream().filter(pagePathGenerator -> StringUtils.equals(pagePathGeneratorId, pagePathGenerator.getId())).findFirst().orElseThrow(() -> new WorkflowException("No PagePathGenerator found for ID [ %s ]".formatted(pagePathGeneratorId))).generatePagePath(rootPagePath, payloadResource);
         if (trackAndUpdate) {
             assetsKitId = trackingResource.getValueMap().get(TRACKING_PROPERTY_ASSETS_KIT_ID, assetsKitId);
         }
@@ -137,7 +137,7 @@ public class AssetKitCreatorWorkflowProcess implements WorkflowProcess {
             persistData(workItem, workflowSession, WORKFLOW_ASSETS_KIT_PAGE_ID, page.getPath());
             persistData(workItem, workflowSession, WORKFLOW_ASSETS_KIT_PATH, payload);
         } catch (WCMException | PersistenceException | RepositoryException e) {
-            throw new WorkflowException(String.format("Could not build Press Kit page for [ %s ]", payload), e);
+            throw new WorkflowException("Could not build Press Kit page for [ %s ]".formatted(payload), e);
         }
     }
 
@@ -163,13 +163,13 @@ public class AssetKitCreatorWorkflowProcess implements WorkflowProcess {
                     try {
                         resource = resource.getResourceResolver().create(resource, "metadata", ImmutableMap.of(JCR_PRIMARYTYPE, NT_UNSTRUCTURED));
                     } catch (PersistenceException e) {
-                        throw new WorkflowException(String.format("Could not create missing metadata node for asset folder [ {} ].", resource.getPath()), e);
+                        throw new WorkflowException("Could not create missing metadata node for asset folder [ {} ].".formatted(resource.getPath()), e);
                     }
                 } else {
                     resource = resource.getChild("metadata");
                 }
             } else {
-                throw new WorkflowException(String.format("Asset folder [ %s ] does not have jcr:content node.", resource.getPath()));
+                throw new WorkflowException("Asset folder [ %s ] does not have jcr:content node.".formatted(resource.getPath()));
             }
         }
 

@@ -22,17 +22,17 @@ package com.adobe.aem.commons.assetshare.content.properties.impl;
 import com.adobe.aem.commons.assetshare.content.properties.ComputedProperty;
 import com.day.cq.dam.api.Asset;
 import io.wcm.testing.mock.aem.junit.AemContext;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import org.osgi.framework.Filter;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ContentTypeImplTest {
 
     AemContext ctx = new AemContext();
@@ -42,7 +42,7 @@ public class ContentTypeImplTest {
 
     ComputedProperty computedProperty;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ctx.registerInjectActivateService(new ContentTypeImpl());
         computedProperty = ctx.getService(ComputedProperty.class);

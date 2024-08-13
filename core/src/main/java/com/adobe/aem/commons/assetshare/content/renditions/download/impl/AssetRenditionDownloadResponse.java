@@ -23,7 +23,7 @@ import com.adobe.acs.commons.util.BufferedSlingHttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletResponse;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.StringWriter;
 

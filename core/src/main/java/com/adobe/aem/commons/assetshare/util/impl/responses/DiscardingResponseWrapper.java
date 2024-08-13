@@ -22,8 +22,8 @@ package com.adobe.aem.commons.assetshare.util.impl.responses;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.wrappers.SlingHttpServletResponseWrapper;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.WriteListener;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.WriteListener;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;

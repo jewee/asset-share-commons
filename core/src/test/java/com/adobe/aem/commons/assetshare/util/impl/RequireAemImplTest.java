@@ -22,13 +22,12 @@
 
 package com.adobe.aem.commons.assetshare.util.impl;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 
 import org.junit.Rule;
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
 import com.adobe.aem.commons.assetshare.util.RequireAem;
 
 import io.wcm.testing.mock.aem.junit.AemContext;

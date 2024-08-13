@@ -20,6 +20,7 @@ package com.adobe.aem.commons.assetshare.configuration.impl;
 
 import com.adobe.aem.commons.assetshare.content.AssetResolver;
 import com.day.cq.wcm.api.WCMMode;
+import jakarta.annotation.Nonnull;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.OptingServlet;
@@ -28,9 +29,8 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 
-import javax.annotation.Nonnull;
-import javax.servlet.Servlet;
-import javax.servlet.ServletException;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletException;
 import java.io.IOException;
 
 @Component(

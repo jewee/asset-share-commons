@@ -5,13 +5,13 @@ import com.day.cq.search.PredicateGroup;
 import io.wcm.testing.mock.aem.junit.AemContext;
 import org.apache.sling.api.resource.ValueMap;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PredicateUtilTest {
 

@@ -20,28 +20,27 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.wrappers.ValueMapDecorator;
 import org.apache.sling.models.factory.ModelFactory;
 import org.apache.sling.testing.mock.sling.servlet.MockRequestDispatcherFactory;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.osgi.framework.Constants;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doAnswer;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AssetRenditionsZipperImplTest {
 
     @Rule
@@ -56,7 +55,7 @@ public class AssetRenditionsZipperImplTest {
     @Mock
     HttpClientBuilderFactory httpClientBuilderFactory;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ctx.load().json(getClass().getResourceAsStream("AssetRenditionsZipperImplTest.json"), "/content");
 
@@ -156,20 +155,22 @@ public class AssetRenditionsZipperImplTest {
         AssetRenditionsZipperImpl zipper = (AssetRenditionsZipperImpl) ctx.getService(AssetRenditionsDownloadOrchestrator.class);
 
         zipper.checkForMaxSize(200);
-        assertTrue( "Exception should not be throw", true);
+        assertTrue( true, "Exception should not be throw");
     }
 
-    @Test(expected = AssetRenditionsException.class)
+    @Test
     public void checkForMaxSize_Over() throws AssetRenditionsException {
-        final String expected = "Test Assets.zip";
+        assertThrows(AssetRenditionsException.class, () -> {
+            final String expected = "Test Assets.zip";
 
-        ctx.registerInjectActivateService(new AssetRenditionsZipperImpl(),
-                "max.size", 10000);
+            ctx.registerInjectActivateService(new AssetRenditionsZipperImpl(),
+                    "max.size", 10000);
 
-        AssetRenditionsZipperImpl zipper = (AssetRenditionsZipperImpl) ctx.getService(AssetRenditionsDownloadOrchestrator.class);
+            AssetRenditionsZipperImpl zipper = (AssetRenditionsZipperImpl) ctx.getService(AssetRenditionsDownloadOrchestrator.class);
 
-        zipper.checkForMaxSize((10000 * 1024) + 100);
-        assertTrue( "Exception should not be throw", true);
+            zipper.checkForMaxSize((10000 * 1024) + 100);
+            assertTrue(true, "Exception should not be throw");
+        });
     }
 
     @Test

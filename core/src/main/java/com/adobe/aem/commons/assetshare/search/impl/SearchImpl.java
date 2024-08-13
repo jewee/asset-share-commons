@@ -28,6 +28,7 @@ import com.adobe.aem.commons.assetshare.search.results.Results;
 import com.adobe.aem.commons.assetshare.search.results.impl.results.EmptyResultsImpl;
 import com.adobe.aem.commons.assetshare.util.PredicateUtil;
 import com.day.cq.wcm.api.Page;
+import jakarta.annotation.PostConstruct;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -40,7 +41,6 @@ import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.PostConstruct;
 import javax.jcr.RepositoryException;
 import java.util.List;
 

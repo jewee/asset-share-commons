@@ -21,11 +21,10 @@ package com.adobe.aem.commons.assetshare.search.results.impl.result;
 
 import com.adobe.aem.commons.assetshare.content.impl.AssetModelImpl;
 import com.adobe.aem.commons.assetshare.search.results.AssetResult;
+import jakarta.annotation.PostConstruct;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
-
-import javax.annotation.PostConstruct;
 
 @Model(
         adaptables = {SlingHttpServletRequest.class},

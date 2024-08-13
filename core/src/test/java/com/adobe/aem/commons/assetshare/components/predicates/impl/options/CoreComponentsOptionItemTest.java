@@ -22,11 +22,11 @@ package com.adobe.aem.commons.assetshare.components.predicates.impl.options;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ValueMap;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -38,7 +38,7 @@ public class CoreComponentsOptionItemTest {
     private ValueMap properties;
     private CoreComponentsOptionItem coreComponentsOptionItem;
 
-    @Before
+    @BeforeEach
     public void setup() {
         request = mock(SlingHttpServletRequest.class);
         options = mock(Resource.class);

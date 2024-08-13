@@ -75,12 +75,12 @@ public class AssetKitReplicationWorkflowProcess implements WorkflowProcess {
         } else if (StringUtils.isBlank(assetsKitPagePath)) {
             throw new WorkflowException("Asset kit page is blank");
         } else if (resourceResolver.adaptTo(PageManager.class).getPage(assetsKitPagePath) == null) {
-            throw new WorkflowException(String.format("Asset kit page [ %s ] is not a page.", assetsKitPagePath));
+            throw new WorkflowException("Asset kit page [ %s ] is not a page.".formatted(assetsKitPagePath));
         } else if (resourceResolver.getResource(assetsKitPath) == null) {
-            throw new WorkflowException(String.format("Asset kit [ %s ] does not exist.", assetsKitPath));
+            throw new WorkflowException("Asset kit [ %s ] does not exist.".formatted(assetsKitPath));
         } else if (!assetKitHelper.isAssetFolder(resourceResolver.getResource(assetsKitPath)) &&
                 !assetKitHelper.isAssetCollection(resourceResolver.getResource(assetsKitPath))) {
-            throw new WorkflowException(String.format("Asset kit asset [ %s ] is not an asset folder or a collection.", assetsKitPath));
+            throw new WorkflowException("Asset kit asset [ %s ] is not an asset folder or a collection.".formatted(assetsKitPath));
         }
         final Page assetsKitPage = resourceResolver.adaptTo(PageManager.class).getPage(assetsKitPagePath);
 
@@ -116,7 +116,7 @@ public class AssetKitReplicationWorkflowProcess implements WorkflowProcess {
             replicator.replicate(session, replicationActionType, assetsKitPage.getPath());
 
         } catch (ReplicationException e) {
-            throw new WorkflowException(String.format("Failed to replicate asset kit [ %s ]", assetsKitPath), e);
+            throw new WorkflowException("Failed to replicate asset kit [ %s ]".formatted(assetsKitPath), e);
         }
     }
 }

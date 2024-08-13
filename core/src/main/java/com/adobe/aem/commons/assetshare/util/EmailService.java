@@ -21,8 +21,8 @@ package com.adobe.aem.commons.assetshare.util;
 
 import org.osgi.annotation.versioning.ProviderType;
 
-import javax.activation.DataSource;
-import javax.mail.internet.InternetAddress;
+import jakarta.activation.DataSource;
+import jakarta.mail.internet.InternetAddress;
 import java.util.List;
 import java.util.Map;
 

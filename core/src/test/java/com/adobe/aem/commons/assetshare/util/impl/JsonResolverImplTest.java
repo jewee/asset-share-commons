@@ -23,18 +23,18 @@ import com.adobe.aem.commons.assetshare.util.JsonResolver;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import io.wcm.testing.mock.aem.junit.AemContext;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class JsonResolverImplTest {
     @Rule
     public final AemContext ctx = new AemContext();
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ctx.load().json(getClass().getResourceAsStream("JsonResolverImpl.json"), "/content");
         ctx.load().json(getClass().getResourceAsStream("JsonResolverImpl--generic-list.json"), "/etc/acs-commons/lists");

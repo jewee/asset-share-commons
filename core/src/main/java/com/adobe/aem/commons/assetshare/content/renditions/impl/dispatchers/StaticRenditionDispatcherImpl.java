@@ -37,7 +37,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
@@ -147,7 +147,7 @@ public class StaticRenditionDispatcherImpl extends AbstractRenditionDispatcherIm
                            ""), response);
 
         } else {
-            throw new ServletException(String.format("Cloud not locate rendition [ %s ] for assets [ %s ]", parameters.getRenditionName(), asset.getPath()));
+            throw new ServletException("Cloud not locate rendition [ %s ] for assets [ %s ]".formatted(parameters.getRenditionName(), asset.getPath()));
         }
     }
 

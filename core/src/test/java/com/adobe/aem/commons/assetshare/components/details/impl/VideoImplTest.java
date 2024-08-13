@@ -28,17 +28,17 @@ import com.adobe.aem.commons.assetshare.content.properties.impl.ComputedProperti
 import com.adobe.aem.commons.assetshare.content.renditions.AssetRenditions;
 import com.adobe.aem.commons.assetshare.content.renditions.impl.AssetRenditionsImpl;
 import io.wcm.testing.mock.aem.junit.AemContext;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class VideoImplTest {
     @Rule
     public final AemContext ctx = new AemContext();
 
-    @Before
+    @BeforeEach
     public void setUp() {
         ctx.load().json("/com/adobe/aem/commons/assetshare/components/details/impl/VideoImplTest.json", "/content");
 

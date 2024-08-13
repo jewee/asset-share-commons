@@ -36,7 +36,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import javax.servlet.Servlet;
+import jakarta.servlet.Servlet;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;

@@ -9,20 +9,20 @@ import com.day.cq.wcm.api.Page;
 import io.wcm.testing.mock.aem.junit.AemContext;
 import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.models.factory.ModelFactory;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.osgi.framework.Constants;
 
 import javax.jcr.RepositoryException;
 
 import static com.adobe.aem.commons.assetshare.testing.MockAssetModels.mockModelFactory;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class BannerComponentUpdaterImplTest {
 
     @Rule
@@ -34,7 +34,7 @@ public class BannerComponentUpdaterImplTest {
     @Mock
     ModelFactory modelFactory;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ctx.load().json(getClass().getResourceAsStream("ComponentUpdaterTest.json"), "/content");
 

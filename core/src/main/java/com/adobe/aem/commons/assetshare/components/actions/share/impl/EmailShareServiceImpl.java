@@ -184,7 +184,7 @@ public class EmailShareServiceImpl implements ShareService {
         // Send e-mail
         final List<String> failureList = emailService.sendEmail(emailTemplatePath, emailParameters, emailAddresses);
         if (failureList.size() > 0) {
-            throw new ShareException(String.format("Unable to send share e-mail too [ %s ]", StringUtils.join(emailAddresses)));
+            throw new ShareException("Unable to send share e-mail too [ %s ]".formatted(StringUtils.join(emailAddresses)));
         }
     }
 

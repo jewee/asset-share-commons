@@ -7,20 +7,20 @@ import com.day.cq.wcm.api.Page;
 import io.wcm.testing.mock.aem.junit.AemContext;
 import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.models.factory.ModelFactory;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.osgi.framework.Constants;
 
 import javax.jcr.RepositoryException;
 
 import static com.adobe.aem.commons.assetshare.testing.MockAssetModels.mockModelFactory;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class PageMetadataComponentUpdaterImplTest {
 
     @Rule
@@ -32,7 +32,7 @@ public class PageMetadataComponentUpdaterImplTest {
     @Mock
     ModelFactory modelFactory;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ctx.load().json(getClass().getResourceAsStream("ComponentUpdaterTest.json"), "/content");
 
@@ -64,7 +64,7 @@ public class PageMetadataComponentUpdaterImplTest {
         String actualTitle = ctx.resourceResolver().getResource("/content/page/jcr:content").getValueMap().get("jcr:title", String.class);
         String actualDescription = ctx.resourceResolver().getResource("/content/page/jcr:content").getValueMap().get("jcr:description", String.class);
 
-        assertEquals("Page title", "My Asset Kit", actualTitle);
-        assertEquals("Page description", "My Asset Kit Description", actualDescription);
+        assertEquals("My Asset Kit", actualTitle, "Page title");
+        assertEquals("My Asset Kit Description", actualDescription, "Page description");
     }
 }

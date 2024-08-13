@@ -31,6 +31,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.PostConstruct;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -45,8 +47,6 @@ import org.apache.sling.models.annotations.injectorspecific.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.Nonnull;
-import javax.annotation.PostConstruct;
 import java.util.*;
 
 @Model(
@@ -181,16 +181,16 @@ public class MetadataImpl extends AbstractEmptyTextComponent implements Metadata
             Object val = combinedProperties.get(getPropertyName());
             if (val == null) {
                 return true;
-            } else if (val instanceof String) {
-                return StringUtils.isBlank((String) val);
-            } else if (val instanceof String[]) {
-                return ArrayUtils.isEmpty((String[]) val) ||
-                        !Arrays.stream((String[]) val).filter(StringUtils::isNotBlank).findFirst().isPresent();
-            } else if (val instanceof Object[]) {
-                return ArrayUtils.isEmpty((Object[]) val);
-            } else if (val instanceof Collection) {
+            } else if (val instanceof String string) {
+                return StringUtils.isBlank(string);
+            } else if (val instanceof String[] strings) {
+                return ArrayUtils.isEmpty(strings) ||
+                        Arrays.stream(strings).filter(StringUtils::isNotBlank).findFirst().isEmpty();
+            } else if (val instanceof Object[] objects) {
+                return ArrayUtils.isEmpty(objects);
+            } else if (val instanceof Collection<?> collection) {
                 // This is never null due to the first check
-                return ((Collection) val).isEmpty();
+                return collection.isEmpty();
             } else {
                 return false;
             }
@@ -218,10 +218,10 @@ public class MetadataImpl extends AbstractEmptyTextComponent implements Metadata
 
             if (null == val) {
                 return values;
-            } else if (val instanceof String) {
-                values.add((String) val);
-            } else if (val instanceof String[]) {
-                values.addAll(Arrays.asList((String[]) val));
+            } else if (val instanceof String string) {
+                values.add(string);
+            } else if (val instanceof String[] strings) {
+                values.addAll(Arrays.asList(strings));
             }
 
             if (DataType.JSON.equals(getType()) && StringUtils.isNotBlank(jsonSource)) {

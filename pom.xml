@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- |  Copyright 2015 Adobe Systems Incorporated
- |
- |  Licensed under the Apache License, Version 2.0 (the "License");
- |  you may not use this file except in compliance with the License.
- |  You may obtain a copy of the License at
- |
- |      http://www.apache.org/licenses/LICENSE-2.0
- |
- |  Unless required by applicable law or agreed to in writing, software
- |  distributed under the License is distributed on an "AS IS" BASIS,
- |  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- |  See the License for the specific language governing permissions and
- |  limitations under the License.
---><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.adobe.aem.commons</groupId>
     <artifactId>assetshare</artifactId>
@@ -70,18 +56,21 @@
         <vault.password>admin</vault.password>
         <package.group>asset-share-commons</package.group>
         <!-- the minimum AEM 6.5 version being supported -->
-        <aem.classic.api.version>6.5.19.0000</aem.classic.api.version><!-- actually one of https://repo1.maven.org/maven2/io/wcm/maven/io.wcm.maven.aem-dependencies/ -->
+        <aem.classic.api.version>6.5.21.0000</aem.classic.api.version>
+        <!-- actually one of https://repo1.maven.org/maven2/io/wcm/maven/io.wcm.maven.aem-dependencies/ -->
         <!-- the minimum AEMaaCS version being supported -->
-        <aem.sdk.api.version>2024.7.17098.20240711T134106Z-240600</aem.sdk.api.version><!-- actually one of https://repo1.maven.org/maven2/com/adobe/aem/aem-sdk-api/ -->
-        <core.wcm.components.version>2.17.14</core.wcm.components.version>
+        <aem.sdk.api.version>2024.7.17098.20240711T134106Z-240600</aem.sdk.api.version>
+        <!-- actually one of https://repo1.maven.org/maven2/com/adobe/aem/aem-sdk-api/ -->
+        <core.wcm.components.version>2.25.4</core.wcm.components.version>
         <frontend-maven-plugin.version>1.9.0</frontend-maven-plugin.version>
         <node.version>v13.7.0</node.version>
         <npm.version>6.13.1</npm.version>
-        <bnd.version>6.3.1</bnd.version>
+        <bnd.version>7.0.0</bnd.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.source>${maven.compiler.target}</maven.compiler.source>
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
 
     <scm>
@@ -107,7 +96,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.1.0</version>
                 <configuration>
                     <tagNameFormat>asset-share-commons-@{project.version}</tagNameFormat>
                     <scmCommentPrefix>[maven-scm] :</scmCommentPrefix>
@@ -129,14 +118,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.3.1</version>
                 <inherited>true</inherited>
             </plugin>
             <!-- Maven Enforcer Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.4.1</version>
+                <version>3.5.0</version>
                 <executions>
                     <execution>
                         <id>enforce-maven</id>
@@ -150,7 +139,7 @@
                                 </requireMavenVersion>
                                 <requireJavaVersion>
                                     <message>Maven must be executed with a Java 8 JRE or higher.</message>
-                                    <version>1.8.0</version>
+                                    <version>17</version>
                                 </requireJavaVersion>
                             </rules>
                         </configuration>
@@ -163,12 +152,12 @@
                 <plugin>
                     <groupId>com.github.eirslett</groupId>
                     <artifactId>frontend-maven-plugin</artifactId>
-                    <version>1.14.2</version>
+                    <version>1.15.0</version>
                     <configuration>
                         <nodeVersion>${node.version}</nodeVersion>
                         <npmVersion>${npm.version}</npmVersion>
                     </configuration>
-                    <executions>
+                    <!-- <executions>
                         <execution>
                             <id>install node and npm</id>
                             <goals>
@@ -181,13 +170,13 @@
                                 <goal>npm</goal>
                             </goals>
                         </execution>
-                    </executions>
+                    </executions> -->
                 </plugin>
                 <!-- Maven Jar Plugin -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.4.1</version>
+                    <version>3.4.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -199,7 +188,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
-                    <version>3.3.2</version>
+                    <version>3.4.0</version>
                 </plugin>
                 <!-- BND Maven Plugin -->
                 <plugin>
@@ -290,13 +279,13 @@ Bundle-DocURL: https://opensource.adobe.com/asset-share-commons/
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>3.2.2</version>
+                    <version>3.3.0</version>
                 </plugin>
                 <!-- Maven Deploy Plugin -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>3.1.1</version>
+                    <version>3.1.2</version>
                 </plugin>
                 <!-- Apache Sling Plugin -->
                 <plugin>
@@ -385,13 +374,13 @@ Bundle-DocURL: https://opensource.adobe.com/asset-share-commons/
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.6.1</version>
+                    <version>3.7.1</version>
                 </plugin>
                 <!-- Build Helper Maven Plugin -->
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>3.4.0</version>
+                    <version>3.6.0</version>
                 </plugin>
                 <!--This plugin's configuration is used to store Eclipse
                     m2e settings only. It has no influence on the Maven build itself. -->
@@ -412,7 +401,7 @@ Bundle-DocURL: https://opensource.adobe.com/asset-share-commons/
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -431,7 +420,7 @@ Bundle-DocURL: https://opensource.adobe.com/asset-share-commons/
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                                 <pluginExecution>
@@ -452,7 +441,7 @@ Bundle-DocURL: https://opensource.adobe.com/asset-share-commons/
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore />
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
@@ -474,18 +463,18 @@ Bundle-DocURL: https://opensource.adobe.com/asset-share-commons/
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.8</version>
+                    <version>0.8.12</version>
                 </plugin>
                 <!-- Maven PMD Plugin -->
                 <plugin>
                     <artifactId>maven-pmd-plugin</artifactId>
-                    <version>3.20.0</version>
+                    <version>3.23.0</version>
                     <configuration>
                         <linkXRef>false</linkXRef>
                         <rulesets>
                             <ruleset>acs/pmd/rules.xml</ruleset>
                         </rulesets>
-                        <targetJdk>1.8</targetJdk>
+                        <targetJdk>17</targetJdk>
                     </configuration>
                     <dependencies>
                         <dependency>
@@ -505,7 +494,7 @@ Bundle-DocURL: https://opensource.adobe.com/asset-share-commons/
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.3.0</version>
+                    <version>3.4.0</version>
                     <configuration>
                         <linkXRef>false</linkXRef>
                         <configLocation>acs/checkstyle/checks.xml</configLocation>
@@ -534,7 +523,7 @@ Bundle-DocURL: https://opensource.adobe.com/asset-share-commons/
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-gpg-plugin</artifactId>
-                    <version>3.0.1</version>
+                    <version>3.2.4</version>
                 </plugin>
                 <!-- Maven Central / OSS Sonatype release plugin -->
                 <plugin>
@@ -546,7 +535,7 @@ Bundle-DocURL: https://opensource.adobe.com/asset-share-commons/
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>9.2.0</version>
+                    <version>10.0.1</version>
                     <configuration>
                         <failBuildOnAnyVulnerability>true</failBuildOnAnyVulnerability>
                     </configuration>
@@ -860,7 +849,7 @@ Bundle-DocURL: https://opensource.adobe.com/asset-share-commons/
 
         <profile>
             <id>jacoco-report</id>
-             <build>
+            <build>
                 <plugins>
                     <plugin>
                         <groupId>org.jacoco</groupId>
@@ -943,13 +932,14 @@ Bundle-DocURL: https://opensource.adobe.com/asset-share-commons/
             <dependency>
                 <groupId>com.google.code.findbugs</groupId>
                 <artifactId>jsr305</artifactId>
-                <version>3.0.0</version><!-- cannot use newer version due to https://github.com/amaembo/jsr-305/issues/31, todo: switch to Jetbrains annotation -->
+                <version>3.0.2</version>
+                <!-- cannot use newer version due to https://github.com/amaembo/jsr-305/issues/31, todo: switch to Jetbrains annotation -->
                 <scope>compile</scope>
             </dependency>
             <!-- JDK 11 -->
             <dependency>
                 <artifactId>org.apache.sling.javax.activation</artifactId>
-                <version>0.1.0</version>
+                <version>0.3.0</version>
                 <groupId>org.apache.sling</groupId>
                 <scope>provided</scope>
             </dependency>
@@ -975,32 +965,32 @@ Bundle-DocURL: https://opensource.adobe.com/asset-share-commons/
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
-                <version>4.8.1</version>
+                <version>5.12.0</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>org.apache.sling.testing.osgi-mock.junit4</artifactId>
-                <version>3.3.6</version>
+                <version>3.4.2</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>org.apache.sling.testing.sling-mock.junit4</artifactId>
-                <version>3.4.10</version>
+                <version>3.5.0</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>io.wcm</groupId>
                 <artifactId>io.wcm.testing.aem-mock.junit4</artifactId>
-                <version>5.0.0</version>
+                <version>5.5.2</version>
                 <scope>test</scope>
             </dependency>
             <!-- Require to resolve ServiceTracker in tests; else they fail -->
             <dependency>
                 <groupId>org.osgi</groupId>
                 <artifactId>org.osgi.util.tracker</artifactId>
-                <version>1.5.2</version>
+                <version>1.5.4</version>
                 <scope>test</scope>
             </dependency>
             <!-- Require to resolve OSGi Tacker Classes in tests; else they fail -->
@@ -1014,7 +1004,7 @@ Bundle-DocURL: https://opensource.adobe.com/asset-share-commons/
             <dependency>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>org.apache.sling.api</artifactId>
-                <version>2.22.0</version>
+                <version>2.27.6</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>

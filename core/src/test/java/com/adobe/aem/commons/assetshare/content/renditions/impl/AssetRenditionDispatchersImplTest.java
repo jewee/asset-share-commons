@@ -8,23 +8,23 @@ import com.adobe.aem.commons.assetshare.content.renditions.impl.dispatchers.Stat
 import com.adobe.aem.commons.assetshare.testing.RequireAemMock;
 import com.adobe.aem.commons.assetshare.util.RequireAem;
 import io.wcm.testing.mock.aem.junit.AemContext;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.osgi.framework.Constants;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AssetRenditionDispatchersImplTest {
     @Rule
     public AemContext ctx = new AemContext();
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         RequireAemMock.setAem(ctx, RequireAem.Distribution.CLASSIC, RequireAem.ServiceType.PUBLISH);
 

@@ -7,22 +7,22 @@ import io.wcm.testing.mock.aem.junit.AemContext;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.factory.ModelFactory;
 import org.apache.sling.resource.collection.ResourceCollection;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.osgi.framework.Constants;
 
 import java.util.Arrays;
 import java.util.Collection;
 
 import static com.adobe.aem.commons.assetshare.testing.MockAssetModels.mockModelFactory;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AssetKitHelperImplTest {
 
     @Rule
@@ -36,7 +36,7 @@ public class AssetKitHelperImplTest {
 
     AssetKitHelper assetKitHelper;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ctx.load().json(getClass().getResourceAsStream("AssetKitHelperImplTest.json"), "/content/dam");
 

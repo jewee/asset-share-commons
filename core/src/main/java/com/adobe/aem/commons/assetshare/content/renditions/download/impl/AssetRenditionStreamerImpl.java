@@ -29,12 +29,12 @@ import com.adobe.aem.commons.assetshare.content.renditions.impl.AssetRenditionSe
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.Header;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.osgi.services.HttpClientBuilderFactory;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.core5.http.Header;
+import org.apache.hc.client5.http.config.RequestConfig;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.core5.http.osgi.services.HttpClientBuilderFactory;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.osgi.service.component.annotations.Activate;
@@ -46,10 +46,11 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.concurrent.TimeUnit;
 
 @Component
 @Designate(ocd = AssetRenditionStreamerImpl.Cfg.class)
@@ -75,7 +76,7 @@ public class AssetRenditionStreamerImpl implements AssetRenditionStreamer {
             assetRenditionDownloadResponse = sendDispatchForAssetRendition(request, response, asset, renditionName);
 
             if (assetRenditionDownloadResponse.getStatusCode() > 302) {
-                throw new AssetRenditionsException(String.format("Response of [ %s ] from dispatched response is unacceptable. Unable to stream [ %s ].",
+                throw new AssetRenditionsException("Response of [ %s ] from dispatched response is unacceptable. Unable to stream [ %s ].".formatted(
                         assetRenditionDownloadResponse.getStatusCode(), asset.getPath()));
             } else if (assetRenditionDownloadResponse.isRedirect()) {
                 return fetchExternalRendition(assetRenditionDownloadResponse.getRedirect());
@@ -84,9 +85,9 @@ public class AssetRenditionStreamerImpl implements AssetRenditionStreamer {
                         assetRenditionDownloadResponse.getContentType());
             }
         } catch (ServletException e) {
-            throw new AssetRenditionsException(String.format("Unable to fetch internal Asset Rendition output stream for [  %s @ %s ]", asset.getPath(), renditionName));
+            throw new AssetRenditionsException("Unable to fetch internal Asset Rendition output stream for [  %s @ %s ]".formatted(asset.getPath(), renditionName));
         } catch (IOException e) {
-            throw new AssetRenditionsException(String.format("Unable to fetch external Asset Rendition output stream for [  %s @ %s ]", asset.getPath(), renditionName));
+            throw new AssetRenditionsException("Unable to fetch external Asset Rendition output stream for [  %s @ %s ]".formatted(asset.getPath(), renditionName));
         }
     }
 
@@ -145,9 +146,9 @@ public class AssetRenditionStreamerImpl implements AssetRenditionStreamer {
 
     protected CloseableHttpClient getHttpClient(int timeoutInMilliSeconds) {
         RequestConfig requestConfig = RequestConfig.copy(RequestConfig.DEFAULT)
-                .setSocketTimeout(timeoutInMilliSeconds)
-                .setConnectTimeout(timeoutInMilliSeconds)
-                .setConnectionRequestTimeout(timeoutInMilliSeconds)
+                .setResponseTimeout(timeoutInMilliSeconds, TimeUnit.MILLISECONDS)
+                .setConnectTimeout(timeoutInMilliSeconds, TimeUnit.MILLISECONDS)
+                .setConnectionRequestTimeout(timeoutInMilliSeconds, TimeUnit.MILLISECONDS)
                 .build();
         return clientBuilderFactory.newBuilder().setDefaultRequestConfig(requestConfig).build();
     }

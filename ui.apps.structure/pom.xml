@@ -31,11 +31,20 @@
                 <configuration>
                     <filters>
                         <!-- /apps root -->
-                        <filter><root>/apps</root></filter>
-                        <filter><root>/apps/asset-share-commons</root></filter>
+                        <filter>
+                            <root>/apps</root>
+                        </filter>
+                        <filter>
+                            <root>/apps/asset-share-commons</root>
+                        </filter>
                     </filters>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
+    </properties>
 </project>

@@ -25,11 +25,11 @@ import com.day.cq.search.eval.JcrPropertyPredicateEvaluator;
 import com.day.cq.search.eval.PredicateEvaluator;
 import com.google.common.collect.ImmutableList;
 import io.wcm.testing.mock.aem.junit.AemContext;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,9 +37,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class PropertyValuesPredicateEvaluatorTest {
 
     private PropertyValuesPredicateEvaluator propertyValuesPredicateEvaluator;
@@ -49,7 +49,7 @@ public class PropertyValuesPredicateEvaluatorTest {
     @Rule
     public AemContext ctx = new AemContext();
 
-    @Before
+    @BeforeEach
     public void setUp() {
         predicate = new Predicate("test", "propertyvalues");
 

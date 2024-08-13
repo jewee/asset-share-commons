@@ -24,19 +24,19 @@ import com.adobe.aem.commons.assetshare.content.AssetResolver;
 import com.adobe.aem.commons.assetshare.content.properties.ComputedProperties;
 import com.adobe.aem.commons.assetshare.content.properties.impl.ComputedPropertiesImpl;
 import io.wcm.testing.mock.aem.junit.AemContext;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class AssetModelImplTest {
 
     @Rule
     public final AemContext ctx = new AemContext();
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ctx.load().json("/com/adobe/aem/commons/assetshare/content/impl/AssetModelImplTest.json", "/content/dam");
 

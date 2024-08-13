@@ -34,7 +34,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -196,8 +196,8 @@ public abstract class AbstractPredicate implements Predicate {
             groupTracker = INITIAL_GROUP_ID;
         }
 
-        if (groupTracker instanceof Integer) {
-            group = (Integer) groupTracker + 1;
+        if (groupTracker instanceof Integer integer) {
+            group = integer + 1;
             request.setAttribute(REQUEST_ATTR_PREDICATE_GROUP_TRACKER, group);
             return true;
         }
@@ -217,8 +217,8 @@ public abstract class AbstractPredicate implements Predicate {
             legacyGroupTracker = INITIAL_LEGACY_GROUP_ID;
         }
 
-        if (legacyGroupTracker instanceof Integer) {
-            group = (Integer) legacyGroupTracker + 1;
+        if (legacyGroupTracker instanceof Integer integer) {
+            group = integer + 1;
             request.setAttribute(REQUEST_ATTR_LEGACY_PREDICATE_GROUP_TRACKER, group);
         } else {
             group = -1;

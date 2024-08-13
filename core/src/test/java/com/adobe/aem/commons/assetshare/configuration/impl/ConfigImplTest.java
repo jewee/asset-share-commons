@@ -5,17 +5,17 @@ import com.adobe.aem.commons.assetshare.util.RequireAem;
 import com.adobe.aem.commons.assetshare.util.impl.RequireAemImpl;
 import io.wcm.testing.mock.aem.junit.AemContext;
 import org.apache.sling.models.factory.ModelFactory;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ConfigImplTest {
 
     @Rule
@@ -24,7 +24,7 @@ public class ConfigImplTest {
     @Mock
     ModelFactory modelFactory;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ctx.load().json("/com/adobe/aem/commons/assetshare/configuration/impl/ConfigImplTest.json",
                 "/content");

@@ -20,16 +20,16 @@
 package com.adobe.aem.commons.assetshare.util.impl.responses;
 
 import org.apache.sling.api.SlingHttpServletResponse;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.WriteListener;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.WriteListener;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
 public class DiscardingResponseWrapperTest {
@@ -37,7 +37,7 @@ public class DiscardingResponseWrapperTest {
     private SlingHttpServletResponse response;
     private DiscardingResponseWrapper discardingResponseWrapper;
 
-    @Before
+    @BeforeEach
     public void setup() {
         response = mock(SlingHttpServletResponse.class);
         discardingResponseWrapper = new DiscardingResponseWrapper(response);

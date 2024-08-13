@@ -12,12 +12,12 @@ import org.apache.sling.api.resource.PersistenceException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.factory.ModelFactory;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.osgi.framework.Constants;
 
 import javax.jcr.Node;
@@ -27,11 +27,11 @@ import java.util.Arrays;
 import java.util.Map;
 
 import static com.adobe.aem.commons.assetshare.testing.MockAssetModels.mockModelFactory;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class AssetKitComponentUpdaterImplTest {
 
     @Rule
@@ -49,7 +49,7 @@ public class AssetKitComponentUpdaterImplTest {
     @Mock
     ModelFactory modelFactory;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ctx.load().json(getClass().getResourceAsStream("ComponentUpdaterTest.json"), "/content");
 

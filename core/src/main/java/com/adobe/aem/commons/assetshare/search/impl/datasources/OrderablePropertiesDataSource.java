@@ -30,7 +30,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 
-import javax.servlet.Servlet;
+import jakarta.servlet.Servlet;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;

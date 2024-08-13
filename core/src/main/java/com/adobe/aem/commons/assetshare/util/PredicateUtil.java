@@ -105,10 +105,10 @@ public final class PredicateUtil {
     private static boolean isValueInValueMap(String needle, Object haystack) {
         boolean found = false;
 
-        if (haystack instanceof String) {
-            found = StringUtils.equals((String) haystack, needle);
-        } else if (haystack instanceof String[]) {
-            found = ArrayUtils.contains((String[])haystack, needle);
+        if (haystack instanceof String string) {
+            found = StringUtils.equals(string, needle);
+        } else if (haystack instanceof String[] strings) {
+            found = ArrayUtils.contains(strings, needle);
         }
 
         return found;

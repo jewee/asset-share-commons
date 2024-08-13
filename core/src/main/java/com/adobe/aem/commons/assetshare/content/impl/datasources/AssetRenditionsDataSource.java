@@ -36,7 +36,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.Servlet;
+import jakarta.servlet.Servlet;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;

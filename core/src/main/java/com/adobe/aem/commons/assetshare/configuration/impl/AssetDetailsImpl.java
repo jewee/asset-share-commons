@@ -31,7 +31,7 @@ import org.apache.sling.models.annotations.Required;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 @Model(
         adaptables = {SlingHttpServletRequest.class},

@@ -32,7 +32,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Reference;
 
-import javax.servlet.Servlet;
+import jakarta.servlet.Servlet;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;

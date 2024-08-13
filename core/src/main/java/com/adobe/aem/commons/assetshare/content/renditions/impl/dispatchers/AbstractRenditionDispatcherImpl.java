@@ -21,8 +21,8 @@ package com.adobe.aem.commons.assetshare.content.renditions.impl.dispatchers;
 
 import com.adobe.aem.commons.assetshare.content.renditions.AssetRenditionDispatcher;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URIBuilder;
+import org.apache.hc.core5.net.URIBuilder;
+import org.apache.hc.core5.http.NameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

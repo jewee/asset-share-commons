@@ -20,16 +20,16 @@
 package com.adobe.aem.commons.assetshare.content.renditions.download.impl;
 
 import io.wcm.testing.mock.aem.junit.AemContext;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringWriter;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AssetRenditionDownloadResponseTest {
 
@@ -40,7 +40,7 @@ public class AssetRenditionDownloadResponseTest {
 
     ByteArrayOutputStream baos;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         stringWriter = new StringWriter();
         baos = new ByteArrayOutputStream();

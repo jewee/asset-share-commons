@@ -35,17 +35,17 @@ import com.adobe.aem.commons.assetshare.util.impl.RequireAemImpl;
 import com.day.cq.dam.api.Asset;
 import io.wcm.testing.mock.aem.junit.AemContext;
 import org.apache.sling.models.factory.ModelFactory;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ContentTypeSelectorImplTest {
 
     @Rule
@@ -63,7 +63,7 @@ public class ContentTypeSelectorImplTest {
     @Mock
     ModelFactory modelFactory;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ctx.load().json("/com/adobe/aem/commons/assetshare/configuration/impl/ContentTypeSelectorImplTest.json",
                 "/content/dam");

@@ -25,11 +25,11 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.request.RequestPathInfo;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.scripting.SlingBindings;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AssetRenditionDownloadRequestTest {
 
@@ -38,7 +38,7 @@ public class AssetRenditionDownloadRequestTest {
 
     Resource resource;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         resource = ctx.create().resource("/content/test");
     }

@@ -25,13 +25,13 @@ import io.wcm.testing.mock.aem.junit.AemContext;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.factory.ModelFactory;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatcher;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.osgi.framework.Constants;
 
 import java.util.Collection;
@@ -39,13 +39,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class ActionHelperImplTest {
     private static final String ASSETS_REQUEST_PARAMETER_NAME = "assets";
 
@@ -64,7 +64,7 @@ public class ActionHelperImplTest {
     @Mock
     AssetModel asset3;
 
-    @Before
+    @BeforeEach
     public void setup() {
         ctx.load().json("/com/adobe/aem/commons/assetshare/search/impl/ActionHelperImplTest.json", "/content/dam");
 

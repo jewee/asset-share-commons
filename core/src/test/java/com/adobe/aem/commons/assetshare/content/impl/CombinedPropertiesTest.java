@@ -29,21 +29,21 @@ import com.day.cq.dam.commons.util.DamUtil;
 import io.wcm.testing.mock.aem.junit.AemContext;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ValueMap;
-import org.junit.Before;
 import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
 public class CombinedPropertiesTest {
 
     @Rule
@@ -63,7 +63,7 @@ public class CombinedPropertiesTest {
 
     private ComputedProperty<String> testWithNoRequestComputedProperty;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ctx.load().json("/com/adobe/aem/commons/assetshare/content/impl/CombinedPropertiesTest.json", "/content/dam");
 
@@ -249,22 +249,22 @@ public class CombinedPropertiesTest {
 
         @Override
         public String get(Asset asset) {
-            return String.format("Only the asset [ %s ] is provided", asset.getPath());
+            return "Only the asset [ %s ] is provided".formatted(asset.getPath());
         }
 
         @Override
         public String get(Asset asset, SlingHttpServletRequest request) {
-            return String.format("The asset [ %s ] and Request are provided", asset.getPath());
+            return "The asset [ %s ] and Request are provided".formatted(asset.getPath());
         }
 
         @Override
         public String get(Asset asset, SlingHttpServletRequest request, ValueMap parameters) {
-            return String.format("The asset [ %s ] and Request and [ %d ] parameters are provided", asset.getPath(), parameters.size());
+            return "The asset [ %s ] and Request and [ %d ] parameters are provided".formatted(asset.getPath(), parameters.size());
         }
 
         @Override
         public String get(Asset asset, ValueMap parameters) {
-            return String.format("The asset [ %s ] and [ %d ] parameters are provided", asset.getPath(), parameters.size());
+            return "The asset [ %s ] and [ %d ] parameters are provided".formatted(asset.getPath(), parameters.size());
         }
     }
 
@@ -287,12 +287,12 @@ public class CombinedPropertiesTest {
 
         @Override
         public String get(Asset asset) {
-            return String.format("Only the asset [ %s ] is provided", asset.getPath());
+            return "Only the asset [ %s ] is provided".formatted(asset.getPath());
         }
 
         @Override
         public String get(Asset asset, ValueMap parameters) {
-            return String.format("The asset [ %s ] and [ %d ] parameters are provided", asset.getPath(), parameters.size());
+            return "The asset [ %s ] and [ %d ] parameters are provided".formatted(asset.getPath(), parameters.size());
         }
     }
 }

@@ -5,14 +5,13 @@ import com.adobe.aem.commons.assetshare.search.Search;
 import com.adobe.aem.commons.assetshare.util.ModelCache;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.PostConstruct;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.Self;
-
-import javax.annotation.Nonnull;
-import javax.annotation.PostConstruct;
 
 @Model(
         adaptables = {SlingHttpServletRequest.class},

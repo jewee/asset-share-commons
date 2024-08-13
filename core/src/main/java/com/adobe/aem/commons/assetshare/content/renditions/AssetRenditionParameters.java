@@ -23,6 +23,7 @@ import com.adobe.acs.commons.util.PathInfoUtil;
 import com.adobe.aem.commons.assetshare.content.AssetModel;
 import com.day.cq.dam.api.Asset;
 import com.day.cq.dam.commons.util.DamUtil;
+import jakarta.annotation.Nonnull;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.ValueMap;
@@ -30,7 +31,6 @@ import org.apache.sling.api.wrappers.ValueMapDecorator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.Nonnull;
 import java.util.*;
 
 /**
@@ -64,13 +64,13 @@ public final class AssetRenditionParameters {
         this.renditionName = PathInfoUtil.getFirstSuffixSegment(request);
 
         if (asset == null) {
-            throw new IllegalArgumentException(String.format("Request resource [ %s ] cannot be resolved to an Asset", request.getResource().getPath()));
+            throw new IllegalArgumentException("Request resource [ %s ] cannot be resolved to an Asset".formatted(request.getResource().getPath()));
         } else if (segments.length < 2) {
-            throw new IllegalArgumentException(String.format("Request must at least 2 suffix segments, found [ %d ]", segments.length));
+            throw new IllegalArgumentException("Request must at least 2 suffix segments, found [ %d ]".formatted(segments.length));
         } else if (StringUtils.isBlank(renditionName)) {
-            throw new IllegalArgumentException(String.format("Request does not have a rendition name in the first suffix segment"));
+            throw new IllegalArgumentException("Request does not have a rendition name in the first suffix segment".formatted());
         } else if (!CACHE_FILENAME.equals(PathInfoUtil.getLastSuffixSegment(request))) {
-            throw new IllegalArgumentException(String.format("Request's last suffix segment must be [ %s ]", CACHE_FILENAME));
+            throw new IllegalArgumentException("Request's last suffix segment must be [ %s ]".formatted(CACHE_FILENAME));
         }
 
         // Build the download filename (for Content-Disposition) from the asset node name and rendition name.

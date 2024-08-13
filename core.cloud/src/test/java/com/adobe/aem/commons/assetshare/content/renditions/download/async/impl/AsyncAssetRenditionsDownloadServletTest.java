@@ -2,7 +2,6 @@ package com.adobe.aem.commons.assetshare.content.renditions.download.async.impl;
 
 import io.wcm.testing.mock.aem.junit.AemContext;
 import org.junit.Rule;
-import org.junit.Test;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
